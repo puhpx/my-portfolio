@@ -67,9 +67,3 @@ h1, h2 {
   background-color: #149e6e;
   border-color: #149e6e;
 }
-
-.profile-image-transparent {
-  position: relative;
-
-  z-index: -1;
-}

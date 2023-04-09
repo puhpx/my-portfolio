@@ -85,8 +85,6 @@ const HomePage = () => {
               src={profileImage}
               alt="Chuck Song"
               fluid
-              // className={(showFireworks || showConfetti) ?
-              //   'profile-image-transparent' : ''}
               style={(showFireworks || showConfetti) ?
                 {opacity: 0.3,
                 zIndex: -1,} : {}}
