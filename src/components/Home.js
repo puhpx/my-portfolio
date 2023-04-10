@@ -79,6 +79,14 @@ const HomePage = () => {
       >
         Confetti!
       </Button>
+      <Col md={1}>
+            <div style={{ width: "50px", height: "50px",position: 'fixed',
+          right: '300px',
+          bottom: '320px',
+          zIndex: 999, }}>
+              <MyCanvas />
+            </div>
+          </Col>
       <Container>
         <Row className="align-items-center">
           <Col md={4}>
@@ -94,7 +102,7 @@ const HomePage = () => {
           <Col md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
             <p>I'm a Software Developer specializing in Web Development</p>
-            <Button href="/portfolio" variant="accent">
+            <Button href="/portfolio" variant="secondary">
               View My Portfolio
             </Button>
             <div className="mt-4">
@@ -110,11 +118,7 @@ const HomePage = () => {
               </a>
             </div>
           </Col>
-          <Col md={1}>
-            <div style={{ width: "50px", height: "50px" }}>
-              <MyCanvas />
-            </div>
-          </Col>
+
         </Row>
       </Container>
     </div>
