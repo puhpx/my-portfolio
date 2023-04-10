@@ -9,6 +9,7 @@ import MyCanvas from '../three/MyCanvas';
 const HomePage = () => {
   const [showFireworks, setShowFireworks] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showGift, setShowGift] = useState(false);
 
   const handleFireworksClick = () => {
     setShowFireworks(true);
@@ -32,6 +33,14 @@ const HomePage = () => {
     height: '10px',
     perspective: '500px',
     colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
+  };
+
+  const handleGiftClick = () => {
+    setShowGift(true);
+  };
+
+  const handleCloseGiftClick = () => {
+    setShowGift(false);
   };
 
   return (
@@ -59,7 +68,7 @@ const HomePage = () => {
         variant="outline-secondary"
         style={{
           position: 'fixed',
-          right: '120px',
+          right: '20px',
           bottom: '20px',
           zIndex: 1000,
         }}
@@ -72,21 +81,43 @@ const HomePage = () => {
         variant="outline-secondary"
         style={{
           position: 'fixed',
-          right: '20px',
+          right: '130px',
           bottom: '20px',
           zIndex: 1000,
         }}
       >
         Confetti!
       </Button>
-      <Col md={1}>
-            <div style={{ width: "50px", height: "50px",position: 'fixed',
-          right: '300px',
-          bottom: '320px',
-          zIndex: 999, }}>
-              <MyCanvas />
-            </div>
-          </Col>
+      {showGift && (
+        <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1000 }}>
+          <MyCanvas />
+          <Button
+            onClick={handleCloseGiftClick}
+            variant="outline-secondary"
+            style={{
+              position: 'absolute',
+              top: '5px',
+              right: '10px',
+              zIndex: 100000,
+            }}
+          >
+            X
+          </Button>
+        </div>
+      )}
+      <Button
+        onClick={handleGiftClick}
+        variant="outline-secondary"
+        style={{
+          position: 'fixed',
+          right: '230px',
+          bottom: '20px',
+          zIndex: 1000,
+        }}
+      >
+        Gift!
+      </Button>
+
       <Container>
         <Row className="align-items-center">
           <Col md={4}>
