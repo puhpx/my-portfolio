@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
 import { Fireworks } from '@fireworks-js/react';
 import Confetti from 'react-dom-confetti';
+import MyCanvas from '../three/MyCanvas';
 
 const HomePage = () => {
   const [showFireworks, setShowFireworks] = useState(false);
@@ -97,11 +98,7 @@ const HomePage = () => {
               View My Portfolio
             </Button>
             <div className="mt-4">
-              <a
-                href="https://github.com/puhpx"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/puhpx" target="_blank" rel="noopener noreferrer">
                 <FaGithub size="2em" className="mx-2" color="#24292e" />
               </a>
               <a
@@ -112,7 +109,12 @@ const HomePage = () => {
                 <FaLinkedin size="2em" className="mx-2" color="#24292e" />
               </a>
             </div>
-            </Col>
+          </Col>
+          <Col md={1}>
+            <div style={{ width: "50px", height: "50px" }}>
+              <MyCanvas />
+            </div>
+          </Col>
         </Row>
       </Container>
     </div>
