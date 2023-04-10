@@ -12,7 +12,6 @@ const projects = [
     title: 'Eco Shop',
     description: 'A web app helps users shop more sustainably by providing info about the environmental impact of the products.',
     image: images['./logo.png'],
-    alt: "ss",
     demoLink: 'project-1-demo-url',
     repoLink: 'https://github.com/Sustainable-Shopping-Assistant',
   },
