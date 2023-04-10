@@ -164,7 +164,8 @@ const MyCanvas = () => {
       camera.position.set(0, 0, 400);
 
       scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xffffff); // set background to white
+      // scene.background = new THREE.Color(0xffffff); // set background to white
+      scene.background = null; // set background to transparent
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.7); // add light
       scene.add(ambientLight);
 
