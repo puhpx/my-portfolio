@@ -20,7 +20,7 @@ const HomePage = () => {
 
   const handleConfettiClick = () => {
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 2000);
+    setTimeout(() => setShowConfetti(false), 3000);
   };
 
   const confetti_config = {
@@ -78,7 +78,7 @@ const HomePage = () => {
             width: '100%',
             height: '100%',
             position: 'fixed',
-            background: '#000',
+            // background: '#000',
           }}
         />
       )}
@@ -96,7 +96,7 @@ const HomePage = () => {
           overflow: 'hidden',
           }}
         >
-         <MyCanvas />
+          <MyCanvas />
           <Button
             onClick={handleCloseGiftClick}
             variant="outline-danger"
@@ -116,7 +116,7 @@ const HomePage = () => {
       <Container
         style={(showFireworks || showConfetti || showGift) ?
               {opacity: 0.3,
-               zIndex: -1,} : {}}
+               zIndex: -1} : {}}
       >
         <Row className="align-items-center">
           <Col xs={12} md={4} className="mb-4 mb-md-0">
