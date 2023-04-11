@@ -136,6 +136,7 @@ const HomePage = () => {
             <Image
               src={profileImage}
               alt="Chuck Song"
+              draggable="false"
               fluid
               style={(showFireworks || showConfetti) ?
                 {opacity: 0.3,
@@ -150,14 +151,14 @@ const HomePage = () => {
             </Button>
             <div className="mt-4">
               <a href="https://github.com/puhpx" target="_blank" rel="noopener noreferrer">
-                <FaGithub size="2em" className="mx-2" color="#24292e" />
+                <FaGithub size="2em" className="mx-2" color="#24292e"/>
               </a>
               <a
                 href="https://linkedin.com/in/chuck-developer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaLinkedin size="2em" className="mx-2" color="#24292e" />
+                <FaLinkedin size="2em" className="mx-2" color="#24292e"/>
               </a>
             </div>
           </Col>

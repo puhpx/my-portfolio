@@ -10,6 +10,7 @@ const AboutMePage = () => {
           <Image
             src={profileImage}
             alt="Chuck Song"
+            draggable="false"
             fluid
           />
         </Col>
