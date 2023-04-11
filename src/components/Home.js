@@ -49,8 +49,8 @@ const HomePage = () => {
     <div
       style={{
         position: 'absolute',
-        top: '50%',
-        left: '50%',
+        top: '57vh',
+        left: '50vw',
         transform: 'translate(-50%, -50%)',
         zIndex: 1,
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -59,7 +59,7 @@ const HomePage = () => {
         boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
         width: '90%',
         height: '80%',
-        overflow: (showFireworks || showConfetti || showGift) ? 'hidden' : 'auto',
+        overflow: (showFireworks || showConfetti) ? 'hidden' : 'auto',
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -93,7 +93,7 @@ const HomePage = () => {
           zIndex: 1000,
           width: '300px',
           height: '300px',
-          overflow: 'hidden',
+          overflow: 'auto',
           }}
         >
           <MyCanvas />

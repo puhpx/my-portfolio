@@ -34,6 +34,7 @@ const AboutMePage = () => {
           </Col>
           <Col md={8}>
             <h2>About Me</h2>
+            <br></br>
             <p>
               Hi, I'm Chuck Song, I am passionate about creating
               high-quality software that is scalable, maintainable,
@@ -44,6 +45,18 @@ const AboutMePage = () => {
               and I am constantly learning and experimenting with
               new tools to stay up-to-date with the latest industry
               trends.
+              <br></br>
+              <br></br>
+              Over the years, I have worked on a variety of full stack
+              project ranging from e-commerce platform to social network
+              site for gamers, and have a proven track record of delivering
+              high-quality products on time and within budget.
+              <br></br>
+              <br></br>
+              In addition to my technical skills, I am a collaborative team
+              player who enjoys working with cross-functional teams to bring
+              new ideas to life. I am skilled in problem-solving and have
+              experience in mentoring junior team members and leading projects.
             </p>
           </Col>
         </Row>

@@ -11,7 +11,7 @@ const projects = [
   {
     title: 'Eco Shop',
     description: 'A web app helps users shop more sustainably by providing info about the environmental impact of the products.',
-    image: images['./logo.png'],
+    image: images['./site-under-construction.png'],
     demoLink: 'project-1-demo-url',
     repoLink: 'https://github.com/Sustainable-Shopping-Assistant',
   },
@@ -71,21 +71,21 @@ const PortfolioPage = () => {
         <Row>
           {projects.map((project, index) => (
             <Col md={4} key={index}>
-              <Card className="mb-4 h-100">
+              <Card className="h-100">
                 <Card.Img
                   variant="top"
                   src={project.image}
                   alt={project.title}
-                  style={{ maxHeight: '300px', cursor: 'pointer' }}
+                  style={{ height: '250px', cursor: 'pointer' }}
                   onClick={() => handleImageClick(project.image)}
                 />
                 <Card.Body className="d-flex flex-column">
                   <Card.Title>{project.title}</Card.Title>
                   <Card.Text>{project.description}</Card.Text>
                   <div className="mt-auto">
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                    {/* <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                       View Demo
-                    </a>
+                    </a> */}
                     <br />
                     <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
                       View Code
