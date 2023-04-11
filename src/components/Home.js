@@ -145,7 +145,7 @@ const HomePage = () => {
           </Col>
           <Col md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
-            <p>I'm a Software Developer specializing in Web Development</p>
+            <p>I'm a Software Developer specializing in Full Stack Web Development</p>
             <Button href="/portfolio" variant="secondary">
               View My Portfolio
             </Button>
