@@ -5,6 +5,7 @@ import profileImage from '../assets/portfolio-site-profile.png';
 import { Fireworks } from '@fireworks-js/react';
 import Confetti from 'react-dom-confetti';
 import MyCanvas from '../three/MyCanvas';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [showFireworks, setShowFireworks] = useState(false);
@@ -146,7 +147,7 @@ const HomePage = () => {
           <Col md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
             <p>I'm a Software Developer specializing in Full Stack Web Development</p>
-            <Button href="/portfolio" variant="secondary">
+            <Button as={Link} to="/portfolio" variant="secondary">
               View My Portfolio
             </Button>
             <div className="mt-4">
