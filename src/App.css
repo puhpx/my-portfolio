@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  padding: 0 1rem;
 }
 
 h1, h2 {

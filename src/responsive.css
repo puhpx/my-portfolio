@@ -1,0 +1,86 @@
+/* Default button styles */
+.fixed-button {
+  position: fixed;
+  z-index: 1000;
+}
+
+/* Mobile (XS) */
+.fixed-button-right-xs {
+  right: 10px;
+}
+
+.fixed-button-bottom-xs {
+  bottom: 10px;
+}
+
+/* Small (SM) */
+@media (min-width: 576px) {
+  .fixed-button-right-sm {
+    right: 20px;
+  }
+
+  .fixed-button-bottom-sm {
+    bottom: 20px;
+  }
+}
+
+/* Medium (MD) */
+@media (min-width: 768px) {
+  .fixed-button-right-md {
+    right: 30px;
+  }
+
+  .fixed-button-bottom-md {
+    bottom: 30px;
+  }
+}
+
+/* Large (LG) */
+@media (min-width: 992px) {
+  .fixed-button-right-lg {
+    right: 40px;
+  }
+
+  .fixed-button-bottom-lg {
+    bottom: 40px;
+  }
+}
+
+/* Extra Large (XL) */
+@media (min-width: 1200px) {
+  .fixed-button-right-xl {
+    right: 50px;
+  }
+
+  .fixed-button-bottom-xl {
+    bottom: 50px;
+  }
+}
+
+.nav-link-button {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  padding: 6px 12px;
+  color: #24292e;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.nav-link-button:last-child {
+  margin-right: 0;
+}
+
+.nav-link-button:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+  text-decoration: none;
+}
+
+.nav-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}

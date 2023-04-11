@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -25,19 +25,154 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Chuck Song</title>
+    <style>
+      #myBgCanvas{
+          background: url("/images/background.jpg");
+      }
+  </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div>
+      <canvas id="myBgCanvas"></canvas>
+    </div>
+    <script>
+      var canvas = document.getElementById("myBgCanvas");
+      //   canvas.width = document.documentElement.clientWidth;
+      //   canvas.height = document.documentElement.clientHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var ctx = canvas.getContext("2d");
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      //Change the canvas size when the window is resized
+      window.onresize = function () {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+      };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      //Create a constructor function for the balls
+      function Ball() {
+          //X and Y coordinates
+          this.x = randomNum(3, canvas.width - 3);
+          this.y = randomNum(3, canvas.height - 3);
+          //Radius
+          this.r = randomNum(2, 5);
+          // this.color = randomColor();
+          //Color
+          this.color="#7ec7fd";
+          //Translation speed, positive and negative intervals are for diverse movement
+          this.speedX = randomNum(-3, 3) * 0.1;
+          this.speedY = randomNum(-3, 3) * 0.1;
+      }
+      Ball.prototype = {
+          //Draw the ball
+          draw: function () {
+              ctx.beginPath();
+              ctx.globalAlpha = 1;
+              ctx.fillStyle = this.color;
+              ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+              ctx.fill();
+          },
+          //Move the ball
+          move: function () {
+              this.x += this.speedX;
+              this.y += this.speedY;
+              //For reasonableness, set the limit value (determine the boundary
+              //value, so that the ball always stays within the screen)
+              if (this.x <= 3 || this.x > canvas.width - 3) {
+                  this.speedX *= -1;
+              }
+              if (this.y <= 3 || this.y >= canvas.height - 3) {
+                  this.speedY *= -1;
+              }
+          },
+      };
+      //Store all the balls
+      var balls = [];
+      //Create 50 balls
+      for (var i = 0; i < 50; i++) {
+          var ball = new Ball();
+          balls.push(ball);
+      }
+      main();
+
+      function main() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          //Draw lines when the mouse moves
+          mouseLine();
+          //Draw lines between balls automatically
+          drawLine();
+          //Use keyframe animation to continuously draw and clear
+          window.requestAnimationFrame(main);
+      }
+      // Add mouse move event
+      // Record the mouseX coordinate when the mouse moves
+      var mouseX;
+      var mouseY;
+      canvas.onmousemove = function (e) {
+          // var ev = event || e;
+          mouseX = e.offsetX;
+          mouseY = e.offsetY;
+      };
+      //Determine whether to draw a line
+
+      function drawLine() {
+          for (var i = 0; i < balls.length; i++) {
+              balls[i].draw();
+              balls[i].move();
+              for (var j = 0; j < balls.length; j++) {
+                  if (i != j) {
+                      if (
+                          Math.sqrt(
+                              Math.pow(balls[i].x - balls[j].x, 2) +
+                              Math.pow(balls[i].y - balls[j].y, 2)
+                          ) < 80
+                      ) {
+                          ctx.beginPath();
+                          ctx.moveTo(balls[i].x, balls[i].y);
+                          ctx.lineTo(balls[j].x, balls[j].y);
+                          ctx.strokeStyle = "white";
+                          ctx.globalAlpha = 0.2;
+                          ctx.stroke();
+                      }
+                  }
+              }
+          }
+      }
+      //Move mouse to draw a line
+      function mouseLine() {
+          for (var i = 0; i < balls.length; i++) {
+              if (
+                  Math.sqrt(
+                      Math.pow(balls[i].x - mouseX, 2) +
+                      Math.pow(balls[i].y - mouseY, 2)
+                  ) < 80
+              ) {
+                  ctx.beginPath();
+                  ctx.moveTo(balls[i].x, balls[i].y);
+                  ctx.lineTo(mouseX, mouseY);
+                  ctx.strokeStyle = "white";
+                  ctx.globalAlpha = 0.8;
+                  ctx.stroke();
+              }
+          }
+      }
+      //random number
+      function randomNum(m, n) {
+          return Math.floor(Math.random() * (n - m + 1) + m);
+      }
+      //random color
+      function randomColor() {
+          return (
+              "rgb(" +
+              randomNum(0, 255) +
+              "," +
+              randomNum(0, 255) +
+              "," +
+              randomNum(0, 255) +
+              ")"
+          );
+      }
+    </script>
   </body>
 </html>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Container, Button, Image, Row, Col } from 'react-bootstrap';
+import { Container, Button, Image, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
 import { Fireworks } from '@fireworks-js/react';
 import Confetti from 'react-dom-confetti';
 import MyCanvas from '../three/MyCanvas';
 import { Link } from 'react-router-dom';
+import '../responsive.css';
 
 const HomePage = () => {
   const [showFireworks, setShowFireworks] = useState(false);
@@ -45,7 +46,24 @@ const HomePage = () => {
   };
 
   return (
-    <div style={{ position: 'fixed', height: '80vh', marginLeft: '10vw', marginTop: '10vh' }}>
+    <div
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '2rem',
+        borderRadius: '10px',
+        boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+        width: '90%',
+        height: '80%',
+        overflow: (showFireworks || showConfetti || showGift) ? 'hidden' : 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       {showFireworks && (
         <Fireworks
           options={{
@@ -64,31 +82,7 @@ const HomePage = () => {
           }}
         />
       )}
-      <Button
-        onClick={handleFireworksClick}
-        variant="outline-secondary"
-        style={{
-          position: 'fixed',
-          right: '20px',
-          bottom: '20px',
-          zIndex: 1000,
-        }}
-      >
-        Fireworks!
-      </Button>
       <Confetti active={showConfetti} config={confetti_config} />
-      <Button
-        onClick={handleConfettiClick}
-        variant="outline-secondary"
-        style={{
-          position: 'fixed',
-          right: '130px',
-          bottom: '20px',
-          zIndex: 1000,
-        }}
-      >
-        Confetti!
-      </Button>
       {showGift && (
         <div
           style={{
@@ -118,18 +112,6 @@ const HomePage = () => {
           </Button>
         </div>
       )}
-      <Button
-        onClick={handleGiftClick}
-        variant="outline-secondary"
-        style={{
-          position: 'fixed',
-          right: '230px',
-          bottom: '20px',
-          zIndex: 1000,
-        }}
-      >
-        Gift!
-      </Button>
 
       <Container
         style={(showFireworks || showConfetti || showGift) ?
@@ -137,7 +119,7 @@ const HomePage = () => {
                zIndex: -1,} : {}}
       >
         <Row className="align-items-center">
-          <Col md={4}>
+          <Col xs={12} md={4} className="mb-4 mb-md-0">
             <Image
               src={profileImage}
               alt="Chuck Song"
@@ -145,7 +127,7 @@ const HomePage = () => {
               fluid
             />
           </Col>
-          <Col md={8} className="text-center text-md-left">
+          <Col xs={12} md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
             <p>I'm a Software Developer specializing in Full Stack Web Development</p>
             <Button
@@ -168,9 +150,43 @@ const HomePage = () => {
               </a>
             </div>
           </Col>
-
         </Row>
       </Container>
+
+      <Navbar
+        expand="md"
+        // bg="light"
+        className="justify-content-end py-2 mt-auto"
+        style={{
+          zIndex: 1000,
+        }}
+      >
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          className="border-0 mx-2"
+        />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav>
+            <div className="nav-buttons-container">
+              <Nav.Link
+                onClick={handleFireworksClick}
+                className="text-secondary nav-link-button"
+              >
+                Fireworks!
+              </Nav.Link>
+              <Nav.Link
+                onClick={handleConfettiClick}
+                className="text-secondary nav-link-button"
+              >
+                Confetti!
+              </Nav.Link>
+              <Nav.Link onClick={handleGiftClick} className="text-secondary nav-link-button">
+                Gift!
+              </Nav.Link>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   );
 };

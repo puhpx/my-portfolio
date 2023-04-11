@@ -48,42 +48,61 @@ const PortfolioPage = () => {
   };
 
   return (
-    <Container>
-      <h2>My Portfolio</h2>
-      <Row>
-        {projects.map((project, index) => (
-          <Col md={4} key={index}>
-            <Card className="mb-4 h-100">
-              <Card.Img
-                variant="top"
-                src={project.image}
-                alt={project.title}
-                style={{ maxHeight: '300px', cursor: 'pointer' }}
-                onClick={() => handleImageClick(project.image)}
-              />
-              <Card.Body className="d-flex flex-column">
-                <Card.Title>{project.title}</Card.Title>
-                <Card.Text>{project.description}</Card.Text>
-                <div className="mt-auto">
-                  <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                    View Demo
-                  </a>
-                  <br />
-                  <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
-                    View Code
-                  </a>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Body>
-          <img src={selectedImage} alt="Selected Project" style={{ width: '100%' }} />
-        </Modal.Body>
-      </Modal>
-    </Container>
+    <div
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '2rem',
+        borderRadius: '10px',
+        boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+        width: '90%',
+        height: '80%',
+        overflow: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Container>
+        <h2>My Portfolio</h2>
+        <Row>
+          {projects.map((project, index) => (
+            <Col md={4} key={index}>
+              <Card className="mb-4 h-100">
+                <Card.Img
+                  variant="top"
+                  src={project.image}
+                  alt={project.title}
+                  style={{ maxHeight: '300px', cursor: 'pointer' }}
+                  onClick={() => handleImageClick(project.image)}
+                />
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Text>{project.description}</Card.Text>
+                  <div className="mt-auto">
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                      View Demo
+                    </a>
+                    <br />
+                    <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                      View Code
+                    </a>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <Modal show={show} onHide={() => setShow(false)}>
+          <Modal.Body>
+            <img src={selectedImage} alt="Selected Project" style={{ width: '100%' }} />
+          </Modal.Body>
+        </Modal>
+      </Container>
+    </div>
   );
 };
 
