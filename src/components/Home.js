@@ -131,7 +131,11 @@ const HomePage = () => {
         Gift!
       </Button>
 
-      <Container>
+      <Container
+        style={(showFireworks || showConfetti || showGift) ?
+              {opacity: 0.3,
+               zIndex: -1,} : {}}
+      >
         <Row className="align-items-center">
           <Col md={4}>
             <Image
@@ -139,15 +143,16 @@ const HomePage = () => {
               alt="Chuck Song"
               draggable="false"
               fluid
-              style={(showFireworks || showConfetti) ?
-                {opacity: 0.3,
-                zIndex: -1,} : {}}
             />
           </Col>
           <Col md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
             <p>I'm a Software Developer specializing in Full Stack Web Development</p>
-            <Button as={Link} to="/portfolio" variant="secondary">
+            <Button
+              as={Link}
+              to="/portfolio"
+              variant="secondary"
+            >
               View My Portfolio
             </Button>
             <div className="mt-4">
