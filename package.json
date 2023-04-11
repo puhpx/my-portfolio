@@ -1,6 +1,8 @@
 {
   "name": "my-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "Chuck Song",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@fireworks-js/react": "^2.10.2",
