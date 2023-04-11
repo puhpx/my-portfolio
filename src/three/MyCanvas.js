@@ -203,7 +203,7 @@ const MyCanvas = () => {
     };
   }, []);
 
-  return <div ref={canvasRef} style={{ height: "50vh", width: "50vw" }}></div>;
+  return <div ref={canvasRef} style={{ height: "300px", width: "300px" }}></div>;
 };
 
 export default MyCanvas;

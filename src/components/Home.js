@@ -89,11 +89,23 @@ const HomePage = () => {
         Confetti!
       </Button>
       {showGift && (
-        <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1000 }}>
-          <MyCanvas />
+        <div
+          style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1000,
+          width: '300px',
+          height: '300px',
+          overflow: 'hidden',
+          }}
+        >
+         <MyCanvas />
           <Button
             onClick={handleCloseGiftClick}
-            variant="outline-secondary"
+            variant="outline-danger"
+            size="sm"
             style={{
               position: 'absolute',
               top: '5px',
