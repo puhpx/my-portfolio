@@ -9,6 +9,7 @@ import MyCanvas from '../three/MyCanvas';
 const HomePage = () => {
   const [showFireworks, setShowFireworks] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showGift, setShowGift] = useState(false);
 
   const handleFireworksClick = () => {
     setShowFireworks(true);
@@ -32,6 +33,14 @@ const HomePage = () => {
     height: '10px',
     perspective: '500px',
     colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
+  };
+
+  const handleGiftClick = () => {
+    setShowGift(true);
+  };
+
+  const handleCloseGiftClick = () => {
+    setShowGift(false);
   };
 
   return (
@@ -59,7 +68,7 @@ const HomePage = () => {
         variant="outline-secondary"
         style={{
           position: 'fixed',
-          right: '120px',
+          right: '20px',
           bottom: '20px',
           zIndex: 1000,
         }}
@@ -72,13 +81,55 @@ const HomePage = () => {
         variant="outline-secondary"
         style={{
           position: 'fixed',
-          right: '20px',
+          right: '130px',
           bottom: '20px',
           zIndex: 1000,
         }}
       >
         Confetti!
       </Button>
+      {showGift && (
+        <div
+          style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1000,
+          width: '300px',
+          height: '300px',
+          overflow: 'hidden',
+          }}
+        >
+         <MyCanvas />
+          <Button
+            onClick={handleCloseGiftClick}
+            variant="outline-danger"
+            size="sm"
+            style={{
+              position: 'absolute',
+              top: '5px',
+              right: '10px',
+              zIndex: 100000,
+            }}
+          >
+            X
+          </Button>
+        </div>
+      )}
+      <Button
+        onClick={handleGiftClick}
+        variant="outline-secondary"
+        style={{
+          position: 'fixed',
+          right: '230px',
+          bottom: '20px',
+          zIndex: 1000,
+        }}
+      >
+        Gift!
+      </Button>
+
       <Container>
         <Row className="align-items-center">
           <Col md={4}>
@@ -94,7 +145,7 @@ const HomePage = () => {
           <Col md={8} className="text-center text-md-left">
             <h1>Welcome to My Portfolio</h1>
             <p>I'm a Software Developer specializing in Web Development</p>
-            <Button href="/portfolio" variant="accent">
+            <Button href="/portfolio" variant="secondary">
               View My Portfolio
             </Button>
             <div className="mt-4">
@@ -110,11 +161,7 @@ const HomePage = () => {
               </a>
             </div>
           </Col>
-          <Col md={1}>
-            <div style={{ width: "50px", height: "50px" }}>
-              <MyCanvas />
-            </div>
-          </Col>
+
         </Row>
       </Container>
     </div>
