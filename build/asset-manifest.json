@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.6d452fe9.css",
-    "main.js": "/static/js/main.7e109db2.js",
+    "main.css": "/static/css/main.5699631c.css",
+    "main.js": "/static/js/main.8541815e.js",
     "static/js/787.128fc6e9.chunk.js": "/static/js/787.128fc6e9.chunk.js",
     "static/media/GamerCity.png": "/static/media/GamerCity.70762c39b767af56c7d9.png",
     "static/media/Atelier-frontend.png": "/static/media/Atelier-frontend.c705b2cc2ae0db129823.png",
+    "static/media/background.jpg": "/static/media/background.300d9a2c0451276b219b.jpg",
     "static/media/GiftBox.gltf": "/static/media/GiftBox.72281e4dfb1f44a1884a.gltf",
     "static/media/Atelier-backend.png": "/static/media/Atelier-backend.cffd3f4c2851210fb38c.png",
     "static/media/portfolio-site-profile.png": "/static/media/portfolio-site-profile.dc600ab690efb57185e0.png",
     "static/media/site-under-construction.png": "/static/media/site-under-construction.5fc5f37149fde5063010.png",
     "index.html": "/index.html",
-    "main.6d452fe9.css.map": "/static/css/main.6d452fe9.css.map",
-    "main.7e109db2.js.map": "/static/js/main.7e109db2.js.map",
+    "main.5699631c.css.map": "/static/css/main.5699631c.css.map",
+    "main.8541815e.js.map": "/static/js/main.8541815e.js.map",
     "787.128fc6e9.chunk.js.map": "/static/js/787.128fc6e9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d452fe9.css",
-    "static/js/main.7e109db2.js"
+    "static/css/main.5699631c.css",
+    "static/js/main.8541815e.js"
   ]
 }

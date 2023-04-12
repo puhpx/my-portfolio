@@ -13,29 +13,25 @@ The website is currently under development and deployed on Netlify with continuo
 
 ## Current State
 
-The website consists of three main pages:
+- Dynamic page background
 
 ### Homepage
-
 - A brief introduction about me
 - LinkedIn and GitHub icon links
 - "Gift!" button: Displays a 3D gift for users to interact with
 - Fireworks and Confetti effect buttons
 
 ### About Me Page
-
 - A summary about me
 - Plans to add tech skills with rating bars, and personal hobbies in the future
 
 ### Portfolio Page
-
 - A showcase of software projects I've built in the past
 - Links to demo videos (currently unavailable) and GitHub repositories
 
 ## Features Planned
 
 - Section displaying GitHub contribution stats
-- Dynamic page background
 - Blog page
 - Contact me section: Allow users to fill out a form and send me an email
 - Rating and review my website feature
