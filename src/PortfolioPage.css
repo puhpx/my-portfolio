@@ -1,0 +1,20 @@
+.portfolio-container {
+  background: transparent;
+}
+
+.portfolio-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.portfolio-card {
+  transition: transform 0.3s;
+  background-color: transparent !important;
+}
+
+.portfolio-card:hover {
+  transform: scale(1.05);
+}
