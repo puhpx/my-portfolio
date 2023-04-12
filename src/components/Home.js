@@ -4,6 +4,11 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
 import { Link } from 'react-router-dom';
 import '../HomePage.css';
+import confettiIcon from '../assets/confetti-icon.png';
+import fireworksIcon from '../assets/fireworks-icon.png';
+import giftIcon from '../assets/gift-icon.png';
+import leftIcon from '../assets/left-arrow-icon.png';
+import rightIcon from '../assets/right-arrow-icon.png';
 import { TypeAnimation } from 'react-type-animation';
 import {
   handleFireworksClick,
@@ -121,11 +126,10 @@ const HomePage = () => {
                     className="px-px py-0 rounded-r xl:px-0 w-8px xl:w-32px xl:py-2 group-hover:rounded-none"
                     onClick={() => setSidebarVisible(!sidebarVisible)}
                   >
-                    <div className="xl:hidden my-8 text-white">
-                      {sidebarVisible ? '>' : '<'}
-                    </div>
                     <div className="hidden xl:block mt-1 mb-2 px-1 text-base text-white text-center font-semibold leading-snug">
-                      Effects
+                      {sidebarVisible ? <img src={rightIcon} alt=">" className="arrow-icon" />
+                                      : <img src={leftIcon} alt="<" className="arrow-icon" />
+                      }
                     </div>
                   </div>
                   <div
@@ -137,19 +141,19 @@ const HomePage = () => {
                       className="sidebar-item"
                       onClick={() => handleFireworksClick(setShowFireworks)}
                     >
-                      Fireworks!
+                      <img src={fireworksIcon} alt="Fireworks" className="sidebar-icon" />
                     </div>
                     <div
                       className="sidebar-item"
                       onClick={() => handleConfettiClick(setShowConfetti)}
                     >
-                      Confetti!
+                      <img src={confettiIcon} alt="Confetti" className="sidebar-icon" />
                     </div>
                     <div
                       className="sidebar-item"
                       onClick={() => handleGiftClick(setShowGift)}
                     >
-                      Gift!
+                      <img src={giftIcon} alt="Gift" className="sidebar-icon" />
                     </div>
                   </div>
                 </div>
