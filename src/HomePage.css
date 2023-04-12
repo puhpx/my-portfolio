@@ -1,4 +1,4 @@
-.homepage-container {
+.home-page-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,13 +28,6 @@
   font-size: 1.2rem;
 }
 
-@media (max-width: 768px) {
-  .homepage-inner-container {
-    padding: 1rem;
-    width: 100%;
-  }
-}
-
 #forum_side_menu {
   position: fixed;
   right: 0;
@@ -50,7 +43,7 @@
 }
 
 #forum-menu-button {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   cursor: pointer;
   z-index: 10;
 }
@@ -62,10 +55,13 @@
   width: 0;
   overflow: hidden;
   transition: width 0.3s;
+  right: -100px;
+  z-index: 1000;
 }
 
 .sidebar-buttons-container.sidebar-visible {
   width: 100px;
+  z-index: 1000;
 }
 
 .sidebar-item {
@@ -73,6 +69,9 @@
   color: white;
   cursor: pointer;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
 }
 
 .sidebar-item:hover {

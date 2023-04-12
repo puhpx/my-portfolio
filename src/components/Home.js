@@ -122,7 +122,7 @@ const HomePage = () => {
                     onClick={() => setSidebarVisible(!sidebarVisible)}
                   >
                     <div className="xl:hidden my-8 text-white">
-                      {sidebarVisible ? '<' : '>'}
+                      {sidebarVisible ? '>' : '<'}
                     </div>
                     <div className="hidden xl:block mt-1 mb-2 px-1 text-base text-white text-center font-semibold leading-snug">
                       Effects
