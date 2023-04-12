@@ -80,6 +80,10 @@
 }
 
 @media (max-width: 992px) {
+  .home-page-container .mt-4 {
+    margin-bottom: 1rem !important;
+  }
+
   .sidebar-buttons-container {
     width: 0;
   }
@@ -101,4 +105,12 @@
   #forum-menu-button {
     display: none;
   }
+}
+
+.typist-text {
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: #4e169e;
+  margin-bottom: 1.5rem;
+  display: inline;
 }
