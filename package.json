@@ -23,8 +23,6 @@
     "react-scripts": "5.0.1",
     "react-three-fiber": "^6.0.13",
     "react-type-animation": "^3.0.1",
-    "react-typewriter": "^0.4.1",
-    "react-typing-animation": "^1.6.2",
     "three": "^0.151.3",
     "web-vitals": "^2.1.4",
     "webpack": "^5.78.0"
