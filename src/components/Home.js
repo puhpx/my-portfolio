@@ -43,9 +43,22 @@ const HomePage = () => {
   }, []);
 
   const typeWriterText = [
-    'Full Stack Developer',
-    'React Enthusiast',
-    'Open Source Contributor',
+    'Passionate Full Stack Developer',
+    1000,
+    'Expert in React and Redux',
+    1000,
+    'Problem Solver and Creative Thinker',
+    1000,
+    'Experienced in Agile and Scrum',
+    1000,
+    'Driven to Build High-Quality Applications',
+    1000,
+    'Always Learning and Exploring New Technologies',
+    1000,
+    'Collaborative Team Player and Leader',
+    1000,
+    'Enthusiastic about Solving Real-World Problems',
+    1000,
   ];
 
   return (
