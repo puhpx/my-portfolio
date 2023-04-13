@@ -28,6 +28,11 @@
   font-size: 1.2rem;
 }
 
+.profile-image {
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
 #forum_side_menu {
   position: fixed;
   right: 0;

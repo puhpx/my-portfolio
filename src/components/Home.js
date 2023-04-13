@@ -83,6 +83,7 @@ const HomePage = () => {
                     alt="Chuck Song"
                     draggable="false"
                     fluid
+                    className="profile-image"
                   />
                 </Col>
                 <Col xs={12} md={8} className="text-center text-md-left">
