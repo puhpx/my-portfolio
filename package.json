@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-runtime": "^6.26.0",
     "bootstrap": "^4.6.2",
+    "emailjs-com": "^3.2.0",
     "fireworks-js": "^2.10.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

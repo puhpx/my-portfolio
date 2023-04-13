@@ -3,6 +3,7 @@ import { Container, Image, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
 import { Link } from 'react-router-dom';
+import ContactForm from '../ContactForm';
 import '../HomePage.css';
 import confettiIcon from '../assets/confetti-icon.png';
 import fireworksIcon from '../assets/fireworks-icon.png';
@@ -74,7 +75,13 @@ const HomePage = () => {
           >
             <Container
               className="p-4 rounded shadow-sm portfolio-inner-container"
-              style={{ minHeight: '75%', maxHeight: 'calc(100% - 2rem)' }}
+              style={{
+                minHeight: '75%',
+                maxHeight: 'calc(100% - 1rem)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
             >
               <Row className="align-items-center">
                 <Col xs={12} md={4} className="mb-4 mb-md-0">
@@ -86,50 +93,64 @@ const HomePage = () => {
                     className="profile-image"
                   />
                 </Col>
-                <Col xs={12} md={8} className="text-center text-md-left">
-                <h1><span role="img" aria-label="Waving Hand">
-                    👋
-                  </span>
-                    Hi there! I'm Chuck{' '}</h1>
+                <Col xs={12} md={8}>
+                  <div className="text-center text-md-left">
+                    <h1>
+                      <span role="img" aria-label="Waving Hand">👋</span> Hi
+                      there! I'm Chuck{' '}
+                    </h1>
 
-                <TypeAnimation
-                  className="typist-text"
-                  sequence={typeWriterText}
-                  wrapper="span"
-                  cursor={true}
-                  repeat={Infinity}
-                />
+                    <TypeAnimation
+                      className="typist-text"
+                      sequence={typeWriterText}
+                      wrapper="span"
+                      cursor={true}
+                      repeat={Infinity}
+                    />
 
-                  <div className="mt-4 d-flex flex-column">
-                    <span style={{marginTop: '1rem', marginBottom: '1rem' }}>
-                      <Link to="/portfolio" className="btn btn-secondary">
-                        View My Portfolio
-                      </Link>
-                    </span>
-                    <span>
-                      <a
-                        href="https://github.com/puhpx"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <div className="mt-4 d-flex flex-column">
+                      <span
+                        style={{
+                          marginTop: '1rem',
+                          marginBottom: '1rem',
+                        }}
                       >
-                        <FaGithub
-                          size="2em"
-                          className="mx-2"
-                          color="#24292e"
-                        />
-                      </a>
-                      <a
-                        href="https://linkedin.com/in/chuck-developer"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FaLinkedin
-                          size="2em"
-                          className="mx-2"
-                          color="#24292e"
-                        />
-                      </a>
-                    </span>
+                        <Link to="/portfolio" className="btn btn-secondary">
+                          View My Portfolio
+                        </Link>
+                      </span>
+                      <span>
+                        <a
+                          href="https://github.com/puhpx"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaGithub
+                            size="2em"
+                            className="mx-2"
+                            color="#24292e"
+                          />
+                        </a>
+                        <a
+                          href="https://linkedin.com/in/chuck-developer"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaLinkedin
+                            size="2em"
+                            className="mx-2"
+                            color="#24292e"
+                          />
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="mt-5">
+                <Col>
+                  <div className="contact-form-wrapper">
+                    <ContactForm />
                   </div>
                 </Col>
               </Row>

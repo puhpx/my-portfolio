@@ -9,7 +9,7 @@
 .homepage-inner-container {
   background-color: rgba(255, 255, 255, 0.9);
   padding-top: 2rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
   border-radius: 10px;
@@ -17,6 +17,7 @@
   width: 90%;
   max-width: 900px;
 }
+
 
 .homepage-inner-container h1 {
   margin-top: 2rem;
@@ -137,3 +138,58 @@
   margin-bottom: 1.5rem;
   display: inline;
 }
+
+.contact-form-container {
+  background-color: rgba(245, 245, 245, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -2rem;
+}
+
+.contact-form-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  border: none;
+  border-bottom: 1px solid #6c757d;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  outline: none;
+  border-color: #06a08e;
+}
+
+.contact-form-container button {
+  background-color: #06a08e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  margin-top: 5px;
+  width: 75px;
+}
+
+.contact-form-container button:hover {
+  background-color: #057c7a;
+}
+
+.contact-form-container button:focus {
+  outline: none;
+}
+
+.contact-form-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
