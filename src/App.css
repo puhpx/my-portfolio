@@ -36,6 +36,46 @@
   display: inline;
 }
 
+.gear-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  color: #d6d8db;
+}
+
+.gear-icon:hover {
+  transform: rotate(360deg);
+}
+
+#dropdown-basic-button::after {
+  display: none;
+}
+
+.theme-dropdown-menu {
+  min-width: 0;
+  padding: 0.25rem 0.25rem;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.theme-dropdown-menu .dropdown-item {
+  padding: 0.25rem 0.5rem;
+}
+
+.theme-dropdown-menu .dropdown-item:active {
+  background-color: #d6d8db;
+  transform: rotate(360deg);
+}
+
+.theme-dropdown-menu.show {
+  min-width: auto;
+  max-width: 100%;
+  padding: 0.25rem 0;
+}
+
+.dropdown-item svg {
+  color: #0056b3;
+}
+
+
 /* theme1: Light mode */
 .theme1 {
   background-color: #ffffff;

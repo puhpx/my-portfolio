@@ -14,6 +14,9 @@ The website is currently under development and deployed on Netlify with continuo
 ## Current State
 
 - Dynamic page background
+- GitHub contribution stats section
+- Contact me section
+- Multiple theme color choices
 
 ### Homepage
 - A brief introduction about me
@@ -31,9 +34,7 @@ The website is currently under development and deployed on Netlify with continuo
 
 ## Features Planned
 
-- Section displaying GitHub contribution stats
 - Blog page
-- Contact me section: Allow users to fill out a form and send me an email
 - Rating and review my website feature
 - Local weather info based on user location
 - Mini games
