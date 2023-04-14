@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import profileImage from '../assets/portfolio-site-profile.png';
 import githubContributions from '../assets/github-contributions.png';
@@ -93,6 +93,23 @@ const AboutMePage = () => {
     },
   ];
 
+  const [smallScreen, setSmallScreen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        setSmallScreen(false);
+      } else {
+        setSmallScreen(true);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="about-me-container">
       <Container fluid className="h-100">
@@ -139,7 +156,7 @@ const AboutMePage = () => {
                       {category.skills.map((skill, index) => (
                         <div className="tech-skill" key={index}>
                           <skill.icon className="tech-skill-icon" />
-                          <span>{skill.name}</span>
+                          {smallScreen ? '' : <span>{skill.name}</span>}
                         </div>
                       ))}
                     </div>
