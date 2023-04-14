@@ -1,30 +1,9 @@
-.home-page-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  padding: 1rem;
-}
-
-.homepage-inner-container {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 900px;
-}
-
-
-.homepage-inner-container h1 {
+.page-inner-container h1 {
   margin-top: 2rem;
   text-align: center;
 }
 
-.homepage-inner-container p {
+.page-inner-container p {
   margin-top: 1rem;
   font-size: 1.2rem;
 }
@@ -129,14 +108,6 @@
   #forum-menu-button {
     display: none;
   }
-}
-
-.typist-text {
-  font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
-  color: #4e169e;
-  margin-bottom: 1.5rem;
-  display: inline;
 }
 
 .contact-form-container {

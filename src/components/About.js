@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import profileImage from '../assets/portfolio-site-profile.png';
 import githubContributions from '../assets/github-contributions.png';
+import '../App.css';
 import '../AboutMePage.css';
 import { FaNodeJs } from 'react-icons/fa';
 import { DiReact } from 'react-icons/di';
@@ -111,13 +112,14 @@ const AboutMePage = () => {
   }, []);
 
   return (
-    <div className="about-me-container">
+    <div className="page-container">
       <Container fluid className="h-100">
         <Row className="h-100">
           <Col className="d-flex justify-content-center align-items-center">
-            <div className="about-me-inner-container"
-                 style={{ minHeight: '75%', maxHeight: 'calc(100% - 2rem)'}}
-            >
+              <Container
+                className="p-4 rounded shadow-sm page-inner-container"
+                style={{ minHeight: '75%', maxHeight: 'calc(100% - 2rem)'}}
+              >
               <Row>
                 <Col>
                   <h2 className="text-center">About Me</h2>
@@ -170,7 +172,7 @@ const AboutMePage = () => {
                 className="github-contributions"
                 fluid
               />
-            </div>
+            </Container>
           </Col>
         </Row>
       </Container>

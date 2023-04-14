@@ -1,70 +1,188 @@
-/* :root {
-  --primary-color: #0366d6;
-  --secondary-color: #24292e;
-  --accent-color: #17b978;
-  --text-color: #24292e;
-  --background-color: #f8f9fa;
+/* themes.css */
+#myBgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100vh;
 }
 
-body {
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 1rem;
+  height: 100%;
+}
+
+.page-inner-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 900px;
+}
+
+.typist-text {
+  font-size: 2rem;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  padding: 0 1rem;
+  color: #4e169e;
+  margin-bottom: 1.5rem;
+  display: inline;
 }
 
-h1, h2 {
-  margin-bottom: 1rem;
+/* theme1: Light mode */
+.theme1 {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: 'Roboto', sans-serif;
 }
 
-.container {
-  margin-top: 2rem;
+.theme1 .page-inner-container {
+  background-color: rgb(208,206,181,0.2);
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);
+}
+.theme1 a {
+  color: #d6d8db;
+  text-decoration: none;
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+.theme1 a:hover {
+  color: #0056b3;
 }
 
-.btn-primary:hover {
-  background-color: #035fd6;
-  border-color: #035fd6;
+.theme1 .nav-link:hover {
+  color: #0056b3;
 }
 
-.navbar {
-  background-color: var(--secondary-color);
-  color: white;
+.theme1 .card {
+  background-color: #ffffff;
+  border-color: #d6d8db;
 }
 
-.nav-link {
-  color: white;
+.theme1 .btn {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #ffffff;
 }
 
-.navbar-toggler {
-  border-color: white;
+.theme1 .btn:hover {
+  background-color: #43589b;
+  border-color: #43589b;
+  color: #ffffff;
 }
 
-.navbar-toggler-icon {
-  background-color: white;
+
+/* theme2:  Dark mode */
+.theme2 {
+  background-color: #333333;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
 }
 
-.btn-outline-secondary {
-  color: var(--secondary-color);
-  border-color: var(--secondary-color);
+.theme2 .page-inner-container {
+  background: #333333;
 }
 
-.btn-outline-secondary:hover {
-  color: white;
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
+.theme2 a {
+  color: #66c2ff;
+  text-decoration: none;
 }
 
-.btn-accent {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+.theme2 a:hover {
+  color: #a8b2bb;
 }
 
-.btn-accent:hover {
-  background-color: #149e6e;
-  border-color: #149e6e;
-} */
+.theme2 .navbar {
+  background-color: #212529;
+}
+
+.theme2 .nav-link:hover {
+  color: #a8b2bb;
+}
+
+.theme2 .card {
+  background-color: #444444;
+  border-color: #565656;
+}
+
+.theme2 .btn {
+  background-color: #444444;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme2 .btn:hover {
+  background-color: #666666;
+  transform: translateY(-2px);
+}
+
+.theme2 .social-icon-link {
+  background-color: #d2cdcd;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.theme2 .social-icon-link:hover {
+  background-color: #f0f0f0;
+}
+
+.theme2 .typist-text {
+  color: #45599c;
+}
+
+
+/* Starry night theme */
+.theme3 #myBgCanvas {
+  background: url('../public/images/background.jpg');
+  z-index: -1;
+}
+
+.theme3 {
+  color: #43589b;
+  font-family: 'Roboto', sans-serif;
+}
+
+.theme3 a {
+  color: rgb(115,134,186);
+  text-decoration: none;
+}
+
+.theme3 a:hover {
+  color: rgb(67,88,155);
+}
+
+.theme3 .navbar {
+  background-color: #212529;
+}
+
+.theme3 .nav-link:hover {
+  color: #3399ff;
+}
+
+.theme3 .btn {
+  background-color: rgb(149,169,177);
+  border-color: rgb(149,169,177);
+  color: #ffffff;
+}
+
+.theme3 .btn:hover {
+  background-color: #647990;
+  border-color: #647990;
+  color: #ffffff;
+}

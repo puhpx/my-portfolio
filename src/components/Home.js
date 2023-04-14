@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
 import { Link } from 'react-router-dom';
 import ContactForm from '../ContactForm';
+import '../App.css';
 import '../HomePage.css';
 import confettiIcon from '../assets/confetti-icon.png';
 import fireworksIcon from '../assets/fireworks-icon.png';
@@ -63,8 +64,8 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="home-page-container">
-      <Container fluid className="vh-100 d-flex flex-column">
+    <div className="page-container">
+      <Container fluid className="h-100">
         <Row className="mb-4"></Row>
         <Row className="flex-grow-1 d-flex">
           <Col></Col>
@@ -73,16 +74,10 @@ const HomePage = () => {
             md={10}
             className="d-flex align-items-center justify-content-center"
           >
-            <Container
-              className="p-4 rounded shadow-sm portfolio-inner-container"
-              style={{
-                minHeight: '75%',
-                maxHeight: 'calc(100% - 1rem)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}
-            >
+             <Container
+                className="p-4 rounded shadow-sm page-inner-container"
+                style={{ minHeight: '75%', maxHeight: 'calc(100% - 2rem)'}}
+              >
               <Row className="align-items-center">
                 <Col xs={12} md={4} className="mb-4 mb-md-0">
                   <Image
@@ -124,6 +119,7 @@ const HomePage = () => {
                           href="https://github.com/puhpx"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="social-icon-link"
                         >
                           <FaGithub
                             size="2em"
@@ -135,6 +131,7 @@ const HomePage = () => {
                           href="https://linkedin.com/in/chuck-developer"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="social-icon-link"
                         >
                           <FaLinkedin
                             size="2em"
