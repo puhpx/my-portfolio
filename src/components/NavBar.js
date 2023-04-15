@@ -9,9 +9,9 @@ const NavBar = ({ changeTheme }) => {
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="navbar">
       <Container>
         <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
-        <Nav className="d-lg-none">
+        <span className="d-lg-none nav-gear-button">
           <GearDropdown changeTheme={changeTheme} />
-        </Nav>
+        </span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

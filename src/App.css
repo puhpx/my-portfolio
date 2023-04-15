@@ -36,6 +36,10 @@
   display: inline;
 }
 
+.nav-gear-button {
+  margin-left: auto;
+}
+
 .gear-icon {
   font-size: 20px;
   transition: transform 0.3s ease;
@@ -51,6 +55,7 @@
 }
 
 .theme-dropdown-menu {
+  position: absolute;
   min-width: 0;
   padding: 0.25rem 0.25rem;
   background-color: rgba(255, 255, 255, 0.9) !important;
@@ -88,6 +93,7 @@
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);
 }
+
 .theme1 a {
   color: #d6d8db;
   text-decoration: none;
