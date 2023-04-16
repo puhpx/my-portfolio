@@ -8,7 +8,7 @@ import BackgroundAnimation from './BackgroundAnimation';
 import './App.css';
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState('theme1');
+  const [currentTheme, setCurrentTheme] = useState('theme2');
 
   const changeTheme = (themeName) => {
     setCurrentTheme(themeName);
