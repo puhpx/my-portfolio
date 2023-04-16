@@ -70,8 +70,9 @@
 .github-contributions {
   display: block;
   margin: 0 auto;
-  max-width: 80%;
+  width: 100%;
   margin-bottom: 2rem;
+  zoom: 1.5;
 }
 
 @media (max-width: 768px) {
@@ -79,4 +80,17 @@
     padding: 1rem;
     width: 100%;
   }
+}
+
+
+
+/* Github contributions graph styles */
+.page-inner-container .github-contributions h2 {
+  margin-top: -1.5rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #333333;
+  border-top: none;
+  zoom: 1;
 }

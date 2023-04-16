@@ -136,6 +136,14 @@
   background: #333333;
 }
 
+.theme2 .page-inner-container .github-contributions h2{
+  color: #a8b2bb;
+}
+
+.theme2 .page-inner-container .github-contributions text {
+  fill: #a8b2bb;
+}
+
 .theme2 a {
   color: #5c6bc0;
   text-decoration: none;
@@ -232,3 +240,4 @@
   border-color: #647990;
   color: #ffffff;
 }
+

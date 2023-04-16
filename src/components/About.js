@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import profileImage from '../assets/portfolio-site-profile.png';
-import githubContributions from '../assets/github-contributions.png';
+// import githubContributions from '../assets/github-contributions.png';
 import '../App.css';
 import '../AboutMePage.css';
+import { GithubContributions } from 'react-github-graph';
 import { FaNodeJs } from 'react-icons/fa';
 import { DiReact } from 'react-icons/di';
 import { AiOutlineCode, AiOutlineApi } from 'react-icons/ai';
@@ -111,6 +112,11 @@ const AboutMePage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const githubOptions = {
+    tooltips: true,
+    responsive: true,
+  };
+
   return (
     <div className="page-container">
       <Container fluid className="h-100">
@@ -165,13 +171,20 @@ const AboutMePage = () => {
                   </div>
                 ))}
               <h3>GitHub Contributions</h3>
-              <Image
+              {/* <Image
                 src={githubContributions}
                 alt="GitHub Contributions"
                 draggable="false"
                 className="github-contributions"
                 fluid
-              />
+              /> */}
+              <div className="github-contributions" >
+                <GithubContributions
+                  className="github-contributions-component"
+                  username='puhpx'
+                  options={githubOptions}
+                />
+              </div>
             </Container>
           </Col>
         </Row>
