@@ -94,15 +94,15 @@ const HomePage = () => {
                       <span role="img" aria-label="Waving Hand">👋</span> Hi
                       there! I'm Chuck{' '}
                     </h1>
-
-                    <TypeAnimation
-                      className="typist-text"
-                      sequence={typeWriterText}
-                      wrapper="span"
-                      cursor={true}
-                      repeat={Infinity}
-                    />
-
+                    <div style={{ height: '4rem' }}>
+                      <TypeAnimation
+                        className="typist-text"
+                        sequence={typeWriterText}
+                        wrapper="span"
+                        cursor={true}
+                        repeat={Infinity}
+                      />
+                    </div>
                     <div className="mt-4 d-flex flex-column">
                       <span
                         style={{

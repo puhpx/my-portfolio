@@ -95,16 +95,16 @@
 }
 
 .theme1 a {
-  color: #d6d8db;
+  color: #0056b3;
   text-decoration: none;
 }
 
 .theme1 a:hover {
-  color: #0056b3;
+  color: #43589b;
 }
 
 .theme1 .nav-link:hover {
-  color: #0056b3;
+  color: #43589b;
 }
 
 .theme1 .card {
@@ -137,7 +137,7 @@
 }
 
 .theme2 a {
-  color: #66c2ff;
+  color: #5c6bc0;
   text-decoration: none;
 }
 
