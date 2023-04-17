@@ -110,6 +110,8 @@
   }
 }
 
+
+/* ContactForm.css */
 .contact-form-container {
   background-color: rgba(245, 245, 245, 0.9);
   padding: 2rem;
@@ -164,3 +166,8 @@
   margin-bottom: 1rem;
 }
 
+.bottom-placeholder::placeholder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

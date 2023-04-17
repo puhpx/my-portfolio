@@ -32,7 +32,6 @@ const BackgroundAnimation = ({ theme }) => {
   }, [theme]);
 
   useEffect(() => {
-    console.log("style>>!!", themeStyles)
     let animationFrameId;
     const canvas = document.getElementById('myBgCanvas');
     const ctx = canvas.getContext('2d');
