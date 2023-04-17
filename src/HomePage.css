@@ -169,5 +169,4 @@
 .bottom-placeholder::placeholder {
   position: absolute;
   bottom: 0;
-  left: 0;
 }

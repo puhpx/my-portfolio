@@ -17,7 +17,19 @@ const ContactForm = () => {
       event.stopPropagation();
     } else {
       // Send email using emailjs
-      emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, form, process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
+      emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.firstName.value + " " + form.lastName.value,
+          from_firstName: form.firstName.value,
+          from_lastName: form.lastName.value,
+          from_phoneNumber: form.phoneNumber.value,
+          message: form.message.value,
+          from_email: form.email.value,
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      )
         .then((result) => {
           console.log(result.text);
           setSuccess(true);
