@@ -170,6 +170,24 @@ const AboutMePage = () => {
                     </div>
                   </div>
                 ))}
+              <h3>GitHub Stats</h3>
+              <iframe
+                src="https://github-readme-stats.vercel.app/api?username=puhpx&show_icons=true&theme=radical"
+                title="GitHub Stats"
+                width="100%"
+                height="200"
+                frameBorder="0"
+              />
+              <h3>GitHub Profile Trophies</h3>
+              <div className="github-trophy-container">
+                <iframe
+                  src="https://github-profile-trophy.vercel.app/?username=puhpx&theme=onedark&row=1&column=4"
+                  title="GitHub Profile Trophies"
+                  width="100%"
+                  height="160"
+                  frameBorder="0"
+                />
+              </div>
               <h3>GitHub Contributions</h3>
               {/* <Image
                 src={githubContributions}
