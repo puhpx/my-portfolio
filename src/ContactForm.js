@@ -26,7 +26,7 @@ const ContactForm = () => {
           from_name: form.firstName.value + " " + form.lastName.value,
           from_firstName: form.firstName.value,
           from_lastName: form.lastName.value,
-          from_phoneNumber: form.phoneNumber,
+          from_phoneNumber: form.phoneNumber.value,
           message: form.message.value,
           from_email: form.email.value,
         },
