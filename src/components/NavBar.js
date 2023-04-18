@@ -17,6 +17,13 @@ const NavBar = ({ changeTheme }) => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/about">About Me</Nav.Link>
             <Nav.Link as={Link} to="/portfolio">Portfolio</Nav.Link>
+            <Nav.Link
+              href="https://drive.google.com/file/d/1XOr00ddvBDKr31akaIZC7C9Qc4ABl31I/view?usp=share_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </Nav.Link>
           </Nav>
           <Nav className="ms-auto d-none d-lg-flex">
             <GearDropdown changeTheme={changeTheme} />
