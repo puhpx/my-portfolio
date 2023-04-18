@@ -5,6 +5,8 @@ import emailjs from 'emailjs-com';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './HomePage.css'
 
+emailjs.init("user ID");
+
 const ContactForm = () => {
   const [validated, setValidated] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -24,7 +26,7 @@ const ContactForm = () => {
           from_name: form.firstName.value + " " + form.lastName.value,
           from_firstName: form.firstName.value,
           from_lastName: form.lastName.value,
-          from_phoneNumber: form.phoneNumber.value,
+          from_phoneNumber: form.phoneNumber,
           message: form.message.value,
           from_email: form.email.value,
         },
