@@ -107,7 +107,6 @@ const ContactForm = () => {
             required
             as="textarea"
             rows={3}
-            className="bottom-placeholder"
             placeholder="Hey Chuck, let's connect!"
           />
           <Form.Control.Feedback type="invalid">

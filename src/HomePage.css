@@ -165,8 +165,3 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-
-.bottom-placeholder::placeholder {
-  position: absolute;
-  bottom: 0;
-}
