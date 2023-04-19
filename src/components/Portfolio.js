@@ -23,6 +23,7 @@ const projects = [
     image: images['./GamerCity.png'],
     demoLink: 'project-2-demo-url',
     repoLink: 'https://github.com/rpp2205-boc-slate',
+    engineeringJournalLink: 'https://gist.github.com/puhpx/0e3c97045a3ee7fa20595d8d49e35cb1',
   },
   {
     title: 'Atelier - Frontend',
@@ -37,6 +38,7 @@ const projects = [
     image: images['./Atelier-backend.png'],
     demoLink: 'project-4-demo-url',
     repoLink: 'https://github.com/Atelier-Frontend/project-atelier',
+    engineeringJournalLink: 'https://gist.github.com/puhpx/9464109678ea118c368d235b9cf1f577',
   },
 ];
 
@@ -93,6 +95,19 @@ const PortfolioPage = () => {
                           >
                             View Code
                           </a>
+                          <br />
+                          {!project.engineeringJournalLink && (
+                            <br />
+                          )}
+                          {project.engineeringJournalLink && (
+                            <a
+                              href={project.engineeringJournalLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Engineering Journal
+                            </a>
+                          )}
                         </div>
                       </Card.Body>
                     </Card>
