@@ -14,14 +14,12 @@ const projects = [
     title: 'Eco Shop',
     description: 'A web app helps users shop more sustainably by providing info about the environmental impact of the products.',
     image: images['./site-under-construction.png'],
-    demoLink: 'project-1-demo-url',
     repoLink: 'https://github.com/Sustainable-Shopping-Assistant',
   },
   {
     title: 'Gamer City',
     description: 'One-stop-shop for all things gaming, providing users with all the information and resources they need to enjoy their favorite games with instant messaging feature.',
     image: images['./GamerCity.png'],
-    demoLink: 'project-2-demo-url',
     repoLink: 'https://github.com/rpp2205-boc-slate',
     engineeringJournalLink: 'https://gist.github.com/puhpx/0e3c97045a3ee7fa20595d8d49e35cb1',
   },
@@ -29,14 +27,13 @@ const projects = [
     title: 'Atelier - Frontend',
     description: 'A fully functional e-commerce app that meets the specifications and requirements outlined by project stakeholders.',
     image: images['./Atelier-frontend.png'],
-    demoLink: 'project-3-demo-url',
+    demoLink: 'https://drive.google.com/file/d/1PUSsBg-L_d44s53TUUCdjrQ3O98OR-lM/view?usp=sharing',
     repoLink: 'https://github.com/Atelier-Frontend/project-atelier',
   },
   {
     title: 'Atelier - Backend',
     description: 'Replaced legacy API with a new backend system to support the full data set and meet production traffic demands.',
     image: images['./Atelier-backend.png'],
-    demoLink: 'project-4-demo-url',
     repoLink: 'https://github.com/Atelier-Frontend/project-atelier',
     engineeringJournalLink: 'https://gist.github.com/puhpx/9464109678ea118c368d235b9cf1f577',
   },
@@ -45,10 +42,17 @@ const projects = [
 const PortfolioPage = () => {
   const [show, setShow] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState('');
 
   const handleImageClick = (imageSrc) => {
     setSelectedImage(imageSrc);
     setShow(true);
+  };
+
+  const handleDemoButtonClick = (videoUrl) => {
+    setSelectedVideo(videoUrl);
+    setShowVideoModal(true);
   };
 
   return (
@@ -96,8 +100,18 @@ const PortfolioPage = () => {
                             View Code
                           </a>
                           <br />
-                          {!project.engineeringJournalLink && (
+                          {(!project.engineeringJournalLink && !project.demoLink) && (
                             <br />
+                          )}
+                          {project.demoLink && (
+                            <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => handleDemoButtonClick(project.demoLink)}
+                            >
+                              Watch Demo
+                            </a>
                           )}
                           {project.engineeringJournalLink && (
                             <a
@@ -121,6 +135,18 @@ const PortfolioPage = () => {
                     alt="Selected Project"
                     style={{ width: '100%' }}
                   />
+                </Modal.Body>
+              </Modal>
+              <Modal show={showVideoModal} onHide={() => setShowVideoModal(false)} centered>
+                <Modal.Body>
+                  <iframe
+                    title="Demo Video"
+                    src={selectedVideo}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ width: '100%', height: '100%' }}
+                  ></iframe>
                 </Modal.Body>
               </Modal>
             </Container>
