@@ -63,6 +63,12 @@ const HomePage = () => {
     1000,
   ];
 
+  const handlePortfolioClick = () => {
+    window.location.href = '/portfolio';
+    window.scrollTo(0, 0);
+  };
+
+
   return (
     <div className="page-container">
       <Container fluid className="h-100">
@@ -110,7 +116,7 @@ const HomePage = () => {
                           marginBottom: '1rem',
                         }}
                       >
-                        <Link to="/portfolio" className="btn btn-secondary">
+                        <Link to="/portfolio" onClick={handlePortfolioClick} className="btn btn-secondary">
                           View My Portfolio
                         </Link>
                       </span>

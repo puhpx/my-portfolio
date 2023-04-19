@@ -4,19 +4,23 @@ import { Link } from 'react-router-dom';
 import { FaSun, FaMoon, FaStar, FaCog } from 'react-icons/fa';
 import '../App.css';
 
+const handleNavLinkClick = () => {
+  window.scrollTo(0, 0);
+};
+
 const NavBar = ({ changeTheme }) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="navbar">
       <Container>
-        <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" onClick={handleNavLinkClick}>Home</Navbar.Brand>
         <span className="d-lg-none nav-gear-button">
           <GearDropdown changeTheme={changeTheme} />
         </span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/about">About Me</Nav.Link>
-            <Nav.Link as={Link} to="/portfolio">Portfolio</Nav.Link>
+            <Nav.Link as={Link} to="/about" onClick={handleNavLinkClick}>About Me</Nav.Link>
+            <Nav.Link as={Link} to="/portfolio" onClick={handleNavLinkClick}>Portfolio</Nav.Link>
             <Nav.Link
               href="https://drive.google.com/file/d/1XOr00ddvBDKr31akaIZC7C9Qc4ABl31I/view?usp=share_link"
               target="_blank"
