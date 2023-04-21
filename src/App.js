@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import HomePage from './components/Home';
 import AboutMePage from './components/About';
 import PortfolioPage from './components/Portfolio';
+import BlogPage from './components/Blog';
 import BackgroundAnimation from './BackgroundAnimation';
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutMePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
         </Routes>
       </Router>
     </div>
