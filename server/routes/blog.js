@@ -138,5 +138,20 @@ router.delete('/blog/:id/comment/:commentId', auth, async (req, res) => {
   }
 });
 
+router.get('/blog/edit/:id', auth, async (req, res) => {
+  try {
+    const blogPost = await BlogPost.findById(req.params.id).populate('author', 'email');
+    if (!blogPost) return res.status(404).json({ message: 'Blog post not found' });
+
+    if (blogPost.author.toString() !== req.user.id && req.user.role !== 'admin')
+      return res.status(401).json({ message: 'Not authorized' });
+
+    res.json(blogPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;
 

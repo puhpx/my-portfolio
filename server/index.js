@@ -20,7 +20,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Import the API routes
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./middleware/auth');
 const blogRoutes = require('./routes/blog');
 
 // Use the API routes
