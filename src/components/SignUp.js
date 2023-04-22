@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:3001/blog/users/register', { email, password });
+      await axios.post(`${BASE_URL}/blog/users/register`, { email, password });
       setMessage('User registered successfully!');
     } catch (error) {
       setMessage('Error occurred while registering user.');
