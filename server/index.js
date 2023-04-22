@@ -19,7 +19,13 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
 
-//API routes
+// Import the API routes
+const authRoutes = require('./routes/auth');
+const blogRoutes = require('./routes/blog');
+
+// Use the API routes
+app.use('/api/auth', authRoutes);
+app.use('/api', blogRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
