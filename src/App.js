@@ -5,6 +5,9 @@ import HomePage from './components/Home';
 import AboutMePage from './components/About';
 import PortfolioPage from './components/Portfolio';
 import BlogPage from './components/Blog';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+import AddBlogPost from './components/AddBlogPost';
 import BackgroundAnimation from './BackgroundAnimation';
 import './App.css';
 
@@ -25,6 +28,9 @@ function App() {
           <Route path="/about" element={<AboutMePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/add-blog-post" element={<AddBlogPost />} />
         </Routes>
       </Router>
     </div>

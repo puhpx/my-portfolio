@@ -22,10 +22,12 @@ mongoose
 // Import the API routes
 const authRoutes = require('./middleware/auth');
 const blogRoutes = require('./routes/blog');
+const userRoutes = require('./routes/user');
 
 // Use the API routes
 app.use('/api/auth', authRoutes);
 app.use('/api', blogRoutes);
+app.use('/blog/users', userRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
