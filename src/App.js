@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './components/Home';
 import AboutMePage from './components/About';
@@ -13,9 +13,14 @@ import './App.css';
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('theme2');
+  const [token, setToken] = useState(null);
 
   const changeTheme = (themeName) => {
     setCurrentTheme(themeName);
+  };
+
+  const handleSetToken = (newToken) => {
+    setToken(newToken);
   };
 
   return (
@@ -27,10 +32,10 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutMePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog" element={<BlogPage token={token} setToken={handleSetToken} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/add-blog-post" element={<AddBlogPost />} />
+          <Route path="/login" element={token ? <Navigate to="/" /> : <Login setToken={handleSetToken} />} />
+          <Route path="/add-blog-post" element={token ? <AddBlogPost /> : <Navigate to="/login" />} />
         </Routes>
       </Router>
     </div>
@@ -38,3 +43,4 @@ function App() {
 }
 
 export default App;
+

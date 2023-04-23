@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
-const BlogPage = () => {
+const BlogPage = ({ token, setToken }) => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
-      const res = await axios.get('/api/blog');
+      const res = await axios.get(`${ BASE_URL }/blog`);
       setBlogPosts(res.data);
     };
     fetchBlogPosts();
@@ -25,11 +25,8 @@ const BlogPage = () => {
   };
 
   const handleLogout = () => {
-    // Remove the auth token from the local storage
+    setToken(null);
     localStorage.removeItem('authToken');
-
-    // Set isLoggedIn to false
-    setIsLoggedIn(false);
   };
 
   const handleAddBlogPost = () => {
@@ -45,18 +42,24 @@ const BlogPage = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {!isLoggedIn && (
+      {!token && (
         <>
           <button onClick={handleSignUp}>Sign Up</button>
           <button onClick={handleLogin}>Login</button>
-          <button onClick={handleLogout}>Logout</button>
         </>
       )}
-      {isLoggedIn && (
-        <>
-          <button onClick={handleAddBlogPost}>Add Blog Post</button>
-          <button onClick={handleLogout}>Logout</button>
-        </>
+      {token && (
+        <div>
+          <span>Username</span>
+          <ul>
+            <li>
+              <button onClick={handleAddBlogPost}>Add Blog Post</button>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
+        </div>
       )}
       <ul>
         {blogPosts.map((blogPost) => (
