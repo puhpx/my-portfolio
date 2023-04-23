@@ -6,15 +6,34 @@ import { BASE_URL } from '../constants';
 const BlogPage = ({ token, setToken }) => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
-      const res = await axios.get(`${ BASE_URL }/blog`);
+      const res = await axios.get(`${BASE_URL}/blog`);
       setBlogPosts(res.data);
     };
+
+    const fetchUserEmail = async () => {
+      if (!token) return;
+
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const res = await axios.get(`${BASE_URL}/blog/users/me`, config);
+        setEmail(res.data.email);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     fetchBlogPosts();
-  }, []);
+    fetchUserEmail();
+  }, [token]);
 
   const handleSignUp = () => {
     navigate("/signup");
@@ -50,7 +69,7 @@ const BlogPage = ({ token, setToken }) => {
       )}
       {token && (
         <div>
-          <span>Username</span>
+          <span>{email}</span>
           <ul>
             <li>
               <button onClick={handleAddBlogPost}>Add Blog Post</button>
@@ -65,7 +84,7 @@ const BlogPage = ({ token, setToken }) => {
         {blogPosts.map((blogPost) => (
           <li key={blogPost._id}>
             <Link to={`/blog/${blogPost._id}`}>{blogPost.title}</Link>
-            <p>{blogPost.content.slice(0, 50)}...</p>
+            <p>{blogPost.content.slice(0, 10)}...</p>
           </li>
         ))}
       </ul>
