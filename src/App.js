@@ -5,6 +5,7 @@ import HomePage from './components/Home';
 import AboutMePage from './components/About';
 import PortfolioPage from './components/Portfolio';
 import BlogPage from './components/Blog';
+import BlogPost from './components/BlogPost';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import AddBlogPost from './components/AddBlogPost';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={token ? <Navigate to="/" /> : <Login setToken={handleSetToken} />} />
           <Route path="/add-blog-post" element={token ? <AddBlogPost token={token} /> : <Navigate to="/login" />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
         </Routes>
       </Router>
     </div>

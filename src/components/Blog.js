@@ -81,7 +81,7 @@ const BlogPage = ({ token, setToken }) => {
         {blogPosts.map((blogPost) => (
           <li key={blogPost._id}>
             <Link to={`/blog/${blogPost._id}`}>{blogPost.title}</Link>
-            <p>{blogPost.content.slice(0, 10)}...</p>
+            <p>{blogPost.content.slice(0, 50)}...</p>
           </li>
         ))}
       </ul>

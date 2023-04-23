@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const BlogPost = () => {
 
   useEffect(() => {
     const fetchBlogPost = async () => {
-      const res = await axios.get(`/blog/${id}`);
+      const res = await axios.get(`${BASE_URL}/blog/${id}`);
       setBlogPost(res.data.blogPost);
       setComments(res.data.comments);
     };
