@@ -35,7 +35,7 @@ function App() {
           <Route path="/blog" element={<BlogPage token={token} setToken={handleSetToken} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={token ? <Navigate to="/" /> : <Login setToken={handleSetToken} />} />
-          <Route path="/add-blog-post" element={token ? <AddBlogPost /> : <Navigate to="/login" />} />
+          <Route path="/add-blog-post" element={token ? <AddBlogPost token={token} /> : <Navigate to="/login" />} />
         </Routes>
       </Router>
     </div>

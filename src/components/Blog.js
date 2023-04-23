@@ -6,32 +6,29 @@ import { BASE_URL } from '../constants';
 const BlogPage = ({ token, setToken }) => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [email, setEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
-      const res = await axios.get(`${BASE_URL}/blog`);
+      const res = await axios.get(`${ BASE_URL }/blog`);
       setBlogPosts(res.data);
     };
+    fetchBlogPosts();
+  }, []);
 
+  useEffect(() => {
     const fetchUserEmail = async () => {
-      if (!token) return;
-
-      try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const res = await axios.get(`${BASE_URL}/blog/users/me`, config);
-        setEmail(res.data.email);
-      } catch (err) {
-        console.error(err);
+      if (token) {
+        try {
+          const config = { headers: { "x-auth-token": token } };
+          const res = await axios.get(`${ BASE_URL }/user`, config);
+          setUserEmail(res.data.email);
+        } catch (error) {
+          console.error("Error fetching user email:", error);
+        }
       }
     };
-
-    fetchBlogPosts();
     fetchUserEmail();
   }, [token]);
 
@@ -69,7 +66,7 @@ const BlogPage = ({ token, setToken }) => {
       )}
       {token && (
         <div>
-          <span>{email}</span>
+          <span>{userEmail}</span>
           <ul>
             <li>
               <button onClick={handleAddBlogPost}>Add Blog Post</button>

@@ -1,92 +1,157 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { BASE_URL } from '../constants';
+const router = require('express').Router();
+const BlogPost = require('../models/BlogPost');
+const Comment = require('../models/Comment');
+const auth = require('../middleware/auth');
 
-const BlogPage = ({ token, setToken }) => {
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const navigate = useNavigate();
+router.get('/blog', async (req, res) => {
+  try {
+    const blogPosts = await BlogPost.find().populate('author', 'email');
+    res.json(blogPosts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-  useEffect(() => {
-    const fetchBlogPosts = async () => {
-      const res = await axios.get(`${ BASE_URL }/blog`);
-      setBlogPosts(res.data);
-    };
-    fetchBlogPosts();
-  }, []);
+router.post('/blog', auth, async (req, res) => {
+  try {
+    const { title, content } = req.body;
 
-  useEffect(() => {
-    const fetchUserEmail = async () => {
-      if (token) {
-        try {
-          const config = { headers: { "x-auth-token": token } };
-          const res = await axios.get(`${ BASE_URL }/user`, config);
-          setUserEmail(res.data.email);
-        } catch (error) {
-          console.error("Error fetching user email:", error);
-        }
-      }
-    };
-    fetchUserEmail();
-  }, [token]);
+    if (!title || !content)
+      return res.status(400).json({ message: 'All fields are required' });
 
-  const handleSignUp = () => {
-    navigate("/signup");
-  };
+    const newBlogPost = new BlogPost({
+      title,
+      content,
+      author: req.user.id,
+    });
 
-  const handleLogin = () => {
-    navigate("/login");
-  };
+    const blogPost = await newBlogPost.save();
+    res.json(blogPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-  const handleLogout = () => {
-    setToken(null);
-    localStorage.removeItem('authToken');
-  };
+router.get('/blog/:id', async (req, res) => {
+  try {
+    const blogPost = await BlogPost.findById(req.params.id).populate('author', 'email');
+    if (!blogPost) return res.status(404).json({ message: 'Blog post not found' });
 
-  const handleAddBlogPost = () => {
-    navigate("/add-blog-post");
-  };
+    const comments = await Comment.find({ blogPost: blogPost._id }).populate('author', 'email');
+    res.json({ blogPost, comments });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-  return (
-    <div>
-      <h1>Blog Page</h1>
-      <input
-        type="text"
-        placeholder="Search for a blog post..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      {!token && (
-        <>
-          <button onClick={handleSignUp}>Sign Up</button>
-          <button onClick={handleLogin}>Login</button>
-        </>
-      )}
-      {token && (
-        <div>
-          <span>{userEmail}</span>
-          <ul>
-            <li>
-              <button onClick={handleAddBlogPost}>Add Blog Post</button>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
-          </ul>
-        </div>
-      )}
-      <ul>
-        {blogPosts.map((blogPost) => (
-          <li key={blogPost._id}>
-            <Link to={`/blog/${blogPost._id}`}>{blogPost.title}</Link>
-            <p>{blogPost.content.slice(0, 10)}...</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+router.put('/blog/:id', auth, async (req, res) => {
+  try {
+    const { title, content } = req.body;
 
-export default BlogPage;
+    if (!title || !content)
+      return res.status(400).json({ message: 'All fields are required' });
+
+    const updatedBlogPost = await BlogPost.findByIdAndUpdate(
+      req.params.id,
+      { title, content },
+      { new: true }
+    );
+
+    if (!updatedBlogPost)
+      return res.status(404).json({ message: 'Blog post not found' });
+
+    res.json(updatedBlogPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.delete('/blog/:id', auth, async (req, res) => {
+  try {
+    const blogPost = await BlogPost.findById(req.params.id);
+
+    if (!blogPost) return res.status(404).json({ message: 'Blog post not found' });
+
+    if (blogPost.author.toString() !== req.user.id && req.user.role !== 'admin')
+      return res.status(401).json({ message: 'Not authorized' });
+
+    await blogPost.remove();
+    res.json({ message: 'Blog post removed' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.post('/blog/:id/comment', auth, async (req, res) => {
+  try {
+    const { content } = req.body;
+
+    if (!content) return res.status(400).json({ message: 'Content is required' });
+
+    const blogPost = await BlogPost.findById(req.params.id);
+
+    if (!blogPost) return res.status(404).json({ message: 'Blog post not found' });
+
+    const newComment = new Comment({
+      content,
+      author: req.user.id,
+      blogPost: blogPost._id,
+    });
+
+    const comment = await newComment.save();
+    res.json(comment);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/blog/:id/comment', async (req, res) => {
+  try {
+    const comments = await Comment.find({ blogPost: req.params.id }).populate('author', 'email');
+    res.json(comments);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.delete('/blog/:id/comment/:commentId', auth, async (req, res) => {
+  try {
+    const comment = await Comment.findById(req.params.commentId);
+
+    if (!comment) return res.status(404).json({ message: 'Comment not found' });
+
+    if (comment.author.toString() !== req.user.id && req.user.role !== 'admin')
+      return res.status(401).json({ message: 'Not authorized' });
+
+    await comment.remove();
+    res.json({ message: 'Comment removed' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/blog/edit/:id', auth, async (req, res) => {
+  try {
+    const blogPost = await BlogPost.findById(req.params.id).populate('author', 'email');
+    if (!blogPost) return res.status(404).json({ message: 'Blog post not found' });
+
+    if (blogPost.author.toString() !== req.user.id && req.user.role !== 'admin')
+      return res.status(401).json({ message: 'Not authorized' });
+
+    res.json(blogPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+module.exports = router;
+
