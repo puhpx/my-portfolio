@@ -11,8 +11,12 @@ const BlogPage = ({ token, setToken }) => {
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
-      const res = await axios.get(`${ BASE_URL }/blog`);
-      setBlogPosts(res.data);
+      try {
+        const res = await axios.get(`${BASE_URL}/blog`);
+        setBlogPosts(res.data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
     };
     fetchBlogPosts();
   }, []);
