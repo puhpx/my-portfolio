@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../constants';
+import mongoose from 'mongoose';
 
-const BlogPost = () => {
+const BlogPost = ({ token }) => {
   const { id } = useParams();
   const [blogPost, setBlogPost] = useState(null);
   const [comments, setComments] = useState([]);
@@ -20,13 +21,14 @@ const BlogPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(`/blog/${id}/comment`, { content });
+    const author = token ? blogPost.author._id : new mongoose.Types.ObjectId();
+    const res = await axios.post(`${BASE_URL}/blog/${id}/comment`, { content, author });
     setComments([...comments, res.data]);
     setContent('');
   };
 
   const handleDelete = async (commentId) => {
-    await axios.delete(`/blog/${id}/comment/${commentId}`);
+    await axios.delete(`${BASE_URL}/blog/${id}/comment/${commentId}`);
     setComments(comments.filter((comment) => comment._id !== commentId));
   };
 
@@ -40,8 +42,10 @@ const BlogPost = () => {
           {comments.map((comment) => (
             <div key={comment._id}>
               <p>{comment.content}</p>
-              <small>Posted by {comment.author.email}</small>
-              <button onClick={() => handleDelete(comment._id)}>Delete</button>
+              <small>Posted by {token ? comment.author.email : comment.author}</small>
+              {token && (
+                <button onClick={() => handleDelete(comment._id)}>Delete</button>
+              )}
             </div>
           ))}
           <form onSubmit={handleSubmit}>

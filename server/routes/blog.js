@@ -87,7 +87,7 @@ router.delete('/blog/:id', auth, async (req, res) => {
   }
 });
 
-router.post('/blog/:id/comment', auth, async (req, res) => {
+router.post('/blog/:id/comment', async (req, res) => {
   try {
     const { content } = req.body;
 
@@ -99,7 +99,7 @@ router.post('/blog/:id/comment', auth, async (req, res) => {
 
     const newComment = new Comment({
       content,
-      author: req.user.id,
+      author: req.body.author,
       blogPost: blogPost._id,
     });
 
