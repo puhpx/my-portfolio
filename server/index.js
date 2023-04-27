@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -16,7 +17,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, '../build')));
 
 const connectionString = process.env.MONGODB_URI;
 
@@ -37,6 +38,10 @@ const userRoutes = require('./routes/user');
 app.use('/auth', authRoutes);
 app.use('/', blogRoutes);
 app.use('/blog/users', userRoutes);
+
+app.get('*', (req, res) => { // Add this block
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
