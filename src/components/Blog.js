@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../constants';
+import "../App.css";
 
 const BlogPage = ({ token, setToken }) => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -54,41 +55,52 @@ const BlogPage = ({ token, setToken }) => {
   };
 
   return (
-    <div>
-      <h1>Blog Page</h1>
+    <div className="blog-container">
+      <h1>My Blog</h1>
       <input
         type="text"
+        className="search-input"
         placeholder="Search for a blog post..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {!token && (
-        <>
-          <button onClick={handleSignUp}>Sign Up</button>
-          <button onClick={handleLogin}>Login</button>
-        </>
-      )}
-      {token && (
-        <div>
-          <span>{userEmail}</span>
-          <ul>
-            <li>
-              <button onClick={handleAddBlogPost}>Add Blog Post</button>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
-          </ul>
+      <div className="blog-actions">
+          {!token && (
+            <>
+              <button className="btn" onClick={handleSignUp}>
+                Sign Up
+              </button>
+              <button className="btn" onClick={handleLogin}>
+                Login
+              </button>
+            </>
+          )}
+          {token && (
+            <div>
+              <span>{userEmail}</span>
+              <ul>
+                <li>
+                  <button className="btn" onClick={handleAddBlogPost}>
+                    Add Blog Post
+                  </button>
+                </li>
+                <li>
+                  <button className="btn" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
-      )}
-      <ul>
+        <div className="blog-grid">
         {blogPosts.map((blogPost) => (
-          <li key={blogPost._id}>
-            <Link to={`/blog/${blogPost._id}`}>{blogPost.title}</Link>
-            <p>{blogPost.content.slice(0, 50)}...</p>
-          </li>
+          <div key={blogPost._id} className="blog-card">
+            <Link to={`/blog/${blogPost._id}`} className="blog-title">{blogPost.title}</Link>
+            <p className="blog-content">{blogPost.content.slice(0, 250)}...</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
