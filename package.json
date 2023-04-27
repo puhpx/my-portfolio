@@ -70,5 +70,6 @@
   },
   "description": "Welcome to my personal portfolio website, showcasing my software development projects and skills, and more! The website is currently under development and deployed on Netlify with continuous deployment. You can visit the site at [https://chucksong.com](https://chucksong.com).",
   "main": "webpack.config.js",
-  "keywords": []
+  "keywords": [],
+  "proxy": "http://localhost:3001"
 }
