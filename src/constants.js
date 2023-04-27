@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://personal-portfolio-site.herokuapp.com:3001';
+export const BASE_URL = 'https://personal-portfolio-site.herokuapp.com';
