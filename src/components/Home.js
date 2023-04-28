@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Image, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImage from '../assets/portfolio-site-profile.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ContactForm from '../ContactForm';
 import '../App.css';
 import '../HomePage.css';
@@ -44,6 +44,8 @@ const HomePage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const navigate = useNavigate();
+
   const typeWriterText = [
     'Passionate Full Stack Developer',
     1000,
@@ -64,8 +66,7 @@ const HomePage = () => {
   ];
 
   const handlePortfolioClick = () => {
-    window.location.href = '/portfolio';
-    window.scrollTo(0, 0);
+    navigate('/portfolio');
   };
 
 
