@@ -14,7 +14,7 @@ app.use(cors({
   optionsSuccessStatus: 204,
   credentials: true,
   exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Private-Network'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../build')));
