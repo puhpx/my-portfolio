@@ -54,6 +54,10 @@ const BlogPage = ({ token, setToken }) => {
     navigate("/add-blog-post");
   };
 
+  const formatSummary = (content) => {
+    return content.replace(/<br\/>/g, ' ').slice(0, 250);
+  };
+
   return (
     <div className="blog-container">
       <h1>My Blog</h1>
@@ -97,7 +101,7 @@ const BlogPage = ({ token, setToken }) => {
         {blogPosts.map((blogPost) => (
           <div key={blogPost._id} className="blog-card">
             <Link to={`/blog/${blogPost._id}`} className="blog-title">{blogPost.title}</Link>
-            <p className="blog-content">{blogPost.content.slice(0, 250)}...</p>
+            <p className="blog-content">{formatSummary(blogPost.content.slice(0, 250))}...</p>
           </div>
         ))}
       </div>
