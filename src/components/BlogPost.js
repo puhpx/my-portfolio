@@ -39,7 +39,7 @@ const BlogPost = ({ token }) => {
       {blogPost ? (
         <>
           <h1>{blogPost.title}</h1>
-          <p>{blogPost.content}</p>
+          <div dangerouslySetInnerHTML={{ __html: blogPost.content }} />
           <h2>Comments</h2>
           <div className="comments-container">
             {comments.map((comment) => (

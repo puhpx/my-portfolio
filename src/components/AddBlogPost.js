@@ -18,9 +18,11 @@ const AddBlogPost = ({ token }) => {
       },
     };
 
+    const formattedContent = content.replace(/\n/g, '<br/>');
+
     const blogPostData = {
       title,
-      content,
+      content: formattedContent,
     };
 
     try {
