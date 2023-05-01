@@ -6,6 +6,7 @@ import "../App.css";
 
 const BlogPage = ({ token, setToken }) => {
   const [blogPosts, setBlogPosts] = useState([]);
+  const [filteredBlogPosts, setFilteredBlogPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const BlogPage = ({ token, setToken }) => {
       try {
         const res = await axios.get(`${BASE_URL}/blog`);
         setBlogPosts(res.data);
+        setFilteredBlogPosts(res.data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       }
@@ -36,6 +38,27 @@ const BlogPage = ({ token, setToken }) => {
     };
     fetchUserEmail();
   }, [token]);
+
+  useEffect(() => {
+    const searchBlogPosts = () => {
+      if (searchTerm.length > 2) {
+        const regex = new RegExp(searchTerm, 'gi');
+        const filtered = blogPosts.filter(post => post.title.match(regex) || post.content.match(regex));
+        setFilteredBlogPosts(filtered);
+      } else {
+        setFilteredBlogPosts(blogPosts);
+      }
+    };
+    searchBlogPosts();
+  }, [searchTerm, blogPosts]);
+
+  const highlightSearchTerm = (text) => {
+    if (searchTerm.length > 2) {
+      const regex = new RegExp(searchTerm, 'gi');
+      return text.replace(regex, match => `<span class="highlight">${match}</span>`);
+    }
+    return text;
+  };
 
   const handleSignUp = () => {
     navigate("/signup");
@@ -98,13 +121,13 @@ const BlogPage = ({ token, setToken }) => {
           )}
         </div>
         <div className="blog-grid">
-        {blogPosts.map((blogPost) => (
-          <div key={blogPost._id} className="blog-card">
-            <Link to={`/blog/${blogPost._id}`} className="blog-title">{blogPost.title}</Link>
-            <p className="blog-content">{formatSummary(blogPost.content.slice(0, 250))}...</p>
-          </div>
-        ))}
-      </div>
+          {filteredBlogPosts.map((blogPost) => (
+            <div key={blogPost._id} className="blog-card">
+              <Link to={`/blog/${blogPost._id}`} className="blog-title" dangerouslySetInnerHTML={{__html: highlightSearchTerm(blogPost.title)}}></Link>
+              <p className="blog-content" dangerouslySetInnerHTML={{__html: highlightSearchTerm(formatSummary(blogPost.content.slice(0, 250))) + '...'}}></p>
+            </div>
+          ))}
+        </div>
     </div>
   );
 };
