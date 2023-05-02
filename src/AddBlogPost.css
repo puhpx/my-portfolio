@@ -1,0 +1,13 @@
+.add-blog-post-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-editor .ql-container {
+  height: 400px;
+}
