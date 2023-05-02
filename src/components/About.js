@@ -7,7 +7,8 @@ import '../AboutMePage.css';
 import { GithubContributions } from 'react-github-graph';
 import { FaNodeJs } from 'react-icons/fa';
 import { DiReact } from 'react-icons/di';
-import { AiOutlineCode, AiOutlineApi } from 'react-icons/ai';
+// import { AiOutlineCode } from 'react-icons/ai';
+import { AiOutlineApi } from 'react-icons/ai';
 import { BiTask } from 'react-icons/bi';
 import { RiTestTubeLine } from 'react-icons/ri';
 import { BsGraphUp } from 'react-icons/bs';
@@ -51,7 +52,7 @@ const AboutMePage = () => {
         { icon: SiHtml5, name: 'HTML5' },
         { icon: SiCss3, name: 'CSS3' },
         { icon: SiSass, name: 'Sass' },
-        { icon: AiOutlineCode, name: 'Three.js' },
+        // { icon: AiOutlineCode, name: 'Three.js' },
         { icon: SiBootstrap, name: 'Bootstrap' },
       ],
     },
