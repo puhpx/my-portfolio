@@ -165,3 +165,9 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+@media (max-width: 992px) {
+  .page-inner-container .mt-4 {
+    margin-top: 2rem !important;
+  }
+}
